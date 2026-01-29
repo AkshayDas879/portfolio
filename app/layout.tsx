@@ -13,8 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Frontend Developer Portfolio | Sweden", // Updated for SEO
-  description: "Portfolio of a Next.js developer based in Sweden",
+  title: "Akshay | Senior Frontend Developer",
+  description: "5+ years experience specializing in React, Angular, and Enterprise Architectures. Based in Stockholm.",
+  openGraph: {
+    title: "Akshay | Frontend Specialist",
+    description: "Building high-performance web applications in Stockholm.",
+    images: ["/og-image.png"], // Put a screenshot of your site in the public folder
+  },
 };
 
 export default function RootLayout({
