@@ -250,7 +250,7 @@ export default function Home() {
 
             {/* 2. LinkedIn Button */}
             <a
-              href="https://www.linkedin.com/in/your-profile" // REPLACE WITH YOUR LINK
+              href="https://www.linkedin.com/in/akshay-das-a-s-144530143/" // REPLACE WITH YOUR LINK
               target="_blank"
               rel="noopener noreferrer"
               className="w-full md:w-auto border border-blue-600 text-blue-600 px-8 py-4 rounded-full font-medium hover:bg-blue-50 transition flex items-center justify-center gap-2"
