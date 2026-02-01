@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @tailwind base;
 @tailwind components;
@@ -8,15 +9,20 @@
   /* This replaces the old tailwind.config.ts 'theme' section */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  
+
   /* You can add custom Swedish-style colors here */
-  --color-fika-brown: #3d2b1f; 
+  --color-fika-brown: #3d2b1f;
 }
 
 /* Add this to ensure the background is consistent */
 :root {
   --background: #ffffff;
   --foreground: #0f172a;
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
 }
 
 body {

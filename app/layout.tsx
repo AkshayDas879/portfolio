@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { ThemeProvider } from "./context/theme-context";
+import { ThemeToggle } from "./components/theme-toggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,7 +41,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-slate-900`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300`}>
         {data.seo.gaId && (
           <>
             <Script
@@ -56,37 +58,42 @@ export default function RootLayout({
             </Script>
           </>
         )}
-        <div className="flex flex-col min-h-screen">
+        <ThemeProvider>
+          <div className="flex flex-col min-h-screen">
 
-          {/* Nav: Full width border, centered content */}
-          <nav className="border-b border-gray-100 py-6 sticky top-0 bg-white/90 backdrop-blur-md z-50 w-full">
-            <div className="max-w-5xl mx-auto px-6 flex justify-between items-center">
-              <div className="font-bold text-xl tracking-tighter uppercase">{data.personal.name}</div>
-              <ul className="flex gap-6 text-sm font-medium text-slate-600">
-                <li><a href="#work" className="hover:text-black transition">Work</a></li>
-                <li><a href="#about" className="hover:text-black transition">About</a></li>
-                <li><a href="#contact" className="hover:text-black transition">Contact</a></li>
-              </ul>
-            </div>
-          </nav>
-
-          {/* Main: Removed pt-20 to prevent double-spacing with Hero */}
-          <main className="flex-grow max-w-5xl mx-auto w-full px-6">
-            {children}
-          </main>
-
-          {/* Footer: Standard layout */}
-          <footer className="border-t border-gray-100 py-12">
-            <div className="max-w-5xl mx-auto px-6 flex justify-between items-center text-xs text-slate-400 uppercase tracking-widest">
-              <p>© {new Date().getFullYear()} — {data.personal.location}</p>
-              <div className="flex gap-4">
-                <a href={data.contact.linkedin} className="hover:text-black transition">LinkedIn</a>
-                <a href={data.personal.github} className="hover:text-black transition">GitHub</a>
+            {/* Nav: Full width border, centered content */}
+            <nav className="border-b border-gray-100 dark:border-slate-800 py-6 sticky top-0 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md z-50 w-full transition-colors duration-300">
+              <div className="max-w-5xl mx-auto px-6 flex justify-between items-center">
+                <div className="font-bold text-xl tracking-tighter uppercase">{data.personal.name}</div>
+                <div className="flex items-center gap-6">
+                  <ul className="flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <li><a href="#work" className="hover:text-black dark:hover:text-white transition">Work</a></li>
+                    <li><a href="#about" className="hover:text-black dark:hover:text-white transition">About</a></li>
+                    <li><a href="#contact" className="hover:text-black dark:hover:text-white transition">Contact</a></li>
+                  </ul>
+                  <ThemeToggle />
+                </div>
               </div>
-            </div>
-          </footer>
+            </nav>
 
-        </div>
+            {/* Main: Removed pt-20 to prevent double-spacing with Hero */}
+            <main className="flex-grow max-w-5xl mx-auto w-full px-6">
+              {children}
+            </main>
+
+            {/* Footer: Standard layout */}
+            <footer className="border-t border-gray-100 dark:border-slate-800 py-12 transition-colors duration-300">
+              <div className="max-w-5xl mx-auto px-6 flex justify-between items-center text-xs text-slate-400 uppercase tracking-widest">
+                <p>© {new Date().getFullYear()} — {data.personal.location}</p>
+                <div className="flex gap-4">
+                  <a href={data.contact.linkedin} className="hover:text-black dark:hover:text-white transition">LinkedIn</a>
+                  <a href={data.personal.github} className="hover:text-black dark:hover:text-white transition">GitHub</a>
+                </div>
+              </div>
+            </footer>
+
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

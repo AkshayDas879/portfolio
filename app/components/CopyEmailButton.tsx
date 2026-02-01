@@ -22,7 +22,7 @@ export default function CopyEmailButton({ email }: CopyEmailButtonProps) {
     return (
         <button
             onClick={copyToClipboard}
-            className="w-full md:w-auto border border-slate-200 px-8 py-4 rounded-full font-medium hover:bg-slate-50 transition text-slate-600 cursor-pointer"
+            className="w-full md:w-auto border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-full font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition text-slate-600 dark:text-slate-400 cursor-pointer"
         >
             {copied ? "Copied! ✅" : "Copy Email"}
         </button>

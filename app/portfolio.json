@@ -7,15 +7,18 @@
         "openGraph": {
             "title": "Akshay | Frontend Specialist",
             "description": "Building high-performance web applications in Stockholm.",
-            "images": [
-                "/assets/og-Akshay.jpeg"
-            ]
+            "images": "/assets/og-Akshay.jpeg"
         }
     },
     "personal": {
         "name": "AKSHAY DAS A S",
         "location": "Stockholm, SE",
         "github": "https://github.com/AkshayDas879"
+    },
+    "notFound": {
+        "title": "404 - Page Not Found",
+        "description": "Oops! The page you are looking for does not exist or has been moved.",
+        "backLinkText": "Go back home"
     },
     "hero": {
         "title": "Frontend Developer",

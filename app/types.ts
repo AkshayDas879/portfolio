@@ -50,7 +50,7 @@ export interface Seo {
     openGraph: {
         title: string;
         description: string;
-        images: string[];
+        images: string | string[];
     };
 }
 
@@ -58,6 +58,12 @@ export interface Personal {
     name: string;
     location: string;
     github: string;
+}
+
+export interface NotFound {
+    title: string;
+    description: string;
+    backLinkText: string;
 }
 
 export interface PortfolioData {
@@ -68,4 +74,5 @@ export interface PortfolioData {
     projects: Project[];
     experience: Experience[];
     contact: Contact;
+    notFound: NotFound;
 }
