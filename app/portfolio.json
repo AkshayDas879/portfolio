@@ -1,0 +1,166 @@
+{
+    "seo": {
+        "title": "Akshay | Senior Frontend Developer",
+        "description": "5+ years experience specializing in React, Angular, and Enterprise Architectures. Based in Stockholm.",
+        "url": "https://akshay-portfolio.com",
+        "gaId": "G-01XXZ715Q1",
+        "openGraph": {
+            "title": "Akshay | Frontend Specialist",
+            "description": "Building high-performance web applications in Stockholm.",
+            "images": [
+                "/assets/og-Akshay.jpeg"
+            ]
+        }
+    },
+    "personal": {
+        "name": "AKSHAY DAS A S",
+        "location": "Stockholm, SE",
+        "github": "https://github.com/AkshayDas879"
+    },
+    "hero": {
+        "title": "Frontend Developer",
+        "subtitle": "based in Stockholm.",
+        "description": "I build high-performance, accessible web applications with Angular, Javascript, React, Next.js and TypeScript. Currently looking for my next challenge in Sweden's tech ecosystem.",
+        "ctaPrimary": "View Projects",
+        "ctaSecondary": "Get in touch"
+    },
+    "about": {
+        "heading": "About Me",
+        "summary": "I am a Frontend Developer with 5+ years of experience architecting robust solutions for the BFSI and Logistics sectors. My expertise lies in modernizing legacy systems—most recently leading a complex migration from jQuery to Angular 14 for a client.",
+        "detailedDescription": "Based in Stockholm, I specialize in building scalable **Micro-Frontends** and high-performance web applications. I bridge the gap between complex backend logic and intuitive user experiences.",
+        "values": [
+            "🇸🇪 Based in Stockholm",
+            "🤝 Collaborative Mindset",
+            "🚀 Continuous Learner"
+        ],
+        "techStack": {
+            "core": "React, Next.js, Angular (6-14), TypeScript",
+            "architecture": "Micro-Frontends, Module Federation, API Integration",
+            "backend": ".NET Core, SQL, Oracle, Jest"
+        }
+    },
+    "projects": [
+        {
+            "title": "Rule Engine & Dynamic Pricing",
+            "client": "Citi Bank (BFSI)",
+            "description": "Architected a high-scale rule engine for real-time special offers. Led the migration of legacy jQuery interfaces to a modern Angular 14 architecture, consuming complex internal APIs.",
+            "tech": [
+                "Angular 14",
+                "Java",
+                "Oracle",
+                "API Design"
+            ],
+            "link": "#"
+        },
+        {
+            "title": "Micro-Frontend Insurance Platform",
+            "client": "Citi Bank (BFSI)",
+            "description": "Developed a private banking insurance application from scratch using Module Federation. Created a shared UI library as an NPM package to ensure design consistency across micro-frontends.",
+            "tech": [
+                "Angular",
+                "React",
+                "Micro-Frontends",
+                "Jest",
+                "NPM"
+            ],
+            "link": "#"
+        },
+        {
+            "title": "Loan Origination System (MSME)",
+            "client": "Asirvad Microfinance",
+            "description": "Built an end-to-end loan management system covering lead entry to automated disbursement. Integrated E-sign and E-Nach APIs for seamless digital contract execution.",
+            "tech": [
+                "Angular 8",
+                "Asp.Net Core",
+                "E-Sign API",
+                "SQL"
+            ],
+            "link": "#"
+        },
+        {
+            "title": "CMMS Maintenance Platform",
+            "client": "CRH Americas Materials",
+            "description": "Engineered a system to track and schedule maintenance for heavy construction equipment across multiple global sites, focusing on production stability and system enhancements.",
+            "tech": [
+                "Angular",
+                "JavaScript",
+                "Enterprise Support"
+            ],
+            "link": "#"
+        },
+        {
+            "title": "Commercial Vehicle Loan System",
+            "client": "Manappuram Finance",
+            "description": "Automated credit scoring and collateral valuation. Integrated external asset valuation services and CIBIL APIs to determine real-time loan eligibility for commercial clients.",
+            "tech": [
+                "Angular",
+                "CIBIL API",
+                "Oracle PL/SQL"
+            ],
+            "link": "#"
+        },
+        {
+            "title": "Automated Cloud Backup Solution",
+            "client": "Internal Product",
+            "description": "Developed a C#-based utility to automate SQL Server database backups directly to Google Drive on a scheduled basis, ensuring data redundancy and recovery.",
+            "tech": [
+                "C#",
+                "SQL Server",
+                "Google Drive API"
+            ],
+            "link": "#"
+        }
+    ],
+    "experience": [
+        {
+            "company": "Tata Consultancy Services",
+            "role": "Frontend Developer",
+            "period": "Mar 2022 — Present",
+            "description": "Leading migrations and developing micro-frontends for global BFSI clients like Citi.",
+            "skills": [
+                "Angular 14",
+                "React",
+                "Micro-Frontends"
+            ]
+        },
+        {
+            "company": "Gridstone Technologies",
+            "role": "Software Engineer",
+            "period": "Dec 2021 — Feb 2022",
+            "description": "Focused on HR management systems and candidate verification workflows.",
+            "skills": [
+                "Angular 11",
+                ".NET Core"
+            ]
+        },
+        {
+            "company": "Manappuram Comptech",
+            "role": "Associate Software Engineer",
+            "period": "Jun 2019 — Nov 2021",
+            "description": "Developed automated loan origination systems and integrated external financial APIs.",
+            "skills": [
+                "Angular 8",
+                "Asp.Net Core",
+                "Oracle"
+            ]
+        },
+        {
+            "company": "GJ Infotech",
+            "role": "Junior Developer",
+            "period": "2018 — 2019",
+            "description": "Built school management solutions and automated cloud backup utilities.",
+            "skills": [
+                "C#",
+                "SQL Server",
+                "VB.Net"
+            ]
+        }
+    ],
+    "contact": {
+        "heading": "Let's Connect",
+        "description": "Currently open to new opportunities in Stockholm. Feel free to reach out via email or connect on LinkedIn.",
+        "email": "akshaydas879@gmail.com",
+        "linkedin": "https://www.linkedin.com/in/akshay-das-a-s/",
+        "resumeUrl": "/Akshay_Frontend_Developer_CV.pdf"
+    }
+}

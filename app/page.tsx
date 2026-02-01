@@ -1,96 +1,14 @@
-'use client'
-import { useState } from "react";
+import Link from "next/link";
+import portfolioData from "./portfolio.json";
+import { PortfolioData } from "./types";
+import CopyEmailButton from "./components/CopyEmailButton";
 
-const projects = [
-  {
-    title: "Rule Engine & Dynamic Pricing",
-    client: "Citi Bank (BFSI)",
-    description: "Architected a high-scale rule engine for real-time special offers. Led the migration of legacy jQuery interfaces to a modern Angular 14 architecture, consuming complex internal APIs.",
-    tech: ["Angular 14", "Java", "Oracle", "API Design"],
-    link: "#"
-  },
-  {
-    title: "Micro-Frontend Insurance Platform",
-    client: "Citi Bank (BFSI)",
-    description: "Developed a private banking insurance application from scratch using Module Federation. Created a shared UI library as an NPM package to ensure design consistency across micro-frontends.",
-    tech: ["Angular", "React", "Micro-Frontends", "Jest", "NPM"],
-    link: "#"
-  },
-  {
-    title: "Loan Origination System (MSME)",
-    client: "Asirvad Microfinance",
-    description: "Built an end-to-end loan management system covering lead entry to automated disbursement. Integrated E-sign and E-Nach APIs for seamless digital contract execution.",
-    tech: ["Angular 8", "Asp.Net Core", "E-Sign API", "SQL"],
-    link: "#"
-  },
-  {
-    title: "CMMS Maintenance Platform",
-    client: "CRH Americas Materials",
-    description: "Engineered a system to track and schedule maintenance for heavy construction equipment across multiple global sites, focusing on production stability and system enhancements.",
-    tech: ["Angular", "JavaScript", "Enterprise Support"],
-    link: "#"
-  },
-  {
-    title: "Commercial Vehicle Loan System",
-    client: "Manappuram Finance",
-    description: "Automated credit scoring and collateral valuation. Integrated external asset valuation services and CIBIL APIs to determine real-time loan eligibility for commercial clients.",
-    tech: ["Angular", "CIBIL API", "Oracle PL/SQL"],
-    link: "#"
-  },
-  {
-    title: "Automated Cloud Backup Solution",
-    client: "Internal Product",
-    description: "Developed a C#-based utility to automate SQL Server database backups directly to Google Drive on a scheduled basis, ensuring data redundancy and recovery.",
-    tech: ["C#", "SQL Server", "Google Drive API"],
-    link: "#"
-  }
-];
+async function getPortfolioData() {
+  return portfolioData as PortfolioData;
+}
 
-const experience = [
-  {
-    company: "Tata Consultancy Services",
-    role: "Frontend Developer",
-    period: "Mar 2022 — Present",
-    description: "Leading migrations and developing micro-frontends for global BFSI clients like Citi.",
-    skills: ["Angular 14", "React", "Micro-Frontends"]
-  },
-  {
-    company: "Gridstone Technologies",
-    role: "Software Engineer",
-    period: "Dec 2021 — Feb 2022",
-    description: "Focused on HR management systems and candidate verification workflows.",
-    skills: ["Angular 11", ".NET Core"]
-  },
-  {
-    company: "Manappuram Comptech",
-    role: "Associate Software Engineer",
-    period: "Jun 2019 — Nov 2021",
-    description: "Developed automated loan origination systems and integrated external financial APIs.",
-    skills: ["Angular 8", "Asp.Net Core", "Oracle"]
-  },
-  {
-    company: "GJ Infotech",
-    role: "Junior Developer",
-    period: "2018 — 2019",
-    description: "Built school management solutions and automated cloud backup utilities.",
-    skills: ["C#", "SQL Server", "VB.Net"]
-  }
-];
-
-export default function Home() {
-
-  const [copied, setCopied] = useState(false);
-  const email = "akshaydas879@gmail.com";
-
-  const copyToClipboard = async () => {
-    try {
-      await navigator.clipboard.writeText(email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy!', err);
-    }
-  };
+export default async function Home() {
+  const { hero, about, projects, experience, contact } = await getPortfolioData();
 
   return (
     <div className="flex flex-col gap-20">
@@ -98,14 +16,12 @@ export default function Home() {
         {/* Hero Content */}
         <div className="space-y-4">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900">
-            Frontend Developer <br />
-            <span className="text-slate-400">based in Stockholm.</span>
+            {hero.title} <br />
+            <span className="text-slate-400">{hero.subtitle}</span>
           </h1>
 
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl leading-relaxed">
-            I build high-performance, accessible web applications with
-            Angular, Javascript,  React, Next.js and TypeScript. Currently looking for my next
-            challenge in Sweden's tech ecosystem.
+            {hero.description}
           </p>
         </div>
 
@@ -115,13 +31,13 @@ export default function Home() {
             href="#work"
             className="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition"
           >
-            View Projects
+            {hero.ctaPrimary}
           </a>
           <a
             href="#contact"
             className="border border-slate-200 px-8 py-3 rounded-full font-medium hover:bg-slate-50 transition"
           >
-            Get in touch
+            {hero.ctaSecondary}
           </a>
         </div>
       </section>
@@ -130,29 +46,21 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           {/* Left Side: Professional Summary */}
           <div className="md:col-span-7 space-y-6">
-            <h2 className="text-3xl font-bold tracking-tight">About Me</h2>
+            <h2 className="text-3xl font-bold tracking-tight">{about.heading}</h2>
             <p className="text-lg text-slate-600 leading-relaxed">
-              I am a <span className="text-black font-medium">Frontend Developer with 5+ years of experience</span> architecting
-              robust solutions for the BFSI and Logistics sectors. My expertise lies in
-              modernizing legacy systems—most recently leading a complex migration from
-              jQuery to Angular 14 for a client.
+              {about.summary}
             </p>
             <p className="text-slate-600">
-              Based in Stockholm, I specialize in building scalable **Micro-Frontends** and high-performance web applications. I bridge the gap between complex
-              backend logic and intuitive user experiences.
+              {about.detailedDescription}
             </p>
 
             {/* Values Swedish recruiters look for */}
             <div className="flex flex-wrap gap-4 pt-4">
-              <div className="flex items-center gap-2 text-sm font-medium text-slate-800 bg-slate-50 px-4 py-2 rounded-full">
-                🇸🇪 Based in Stockholm
-              </div>
-              <div className="flex items-center gap-2 text-sm font-medium text-slate-800 bg-slate-50 px-4 py-2 rounded-full">
-                🤝 Collaborative Mindset
-              </div>
-              <div className="flex items-center gap-2 text-sm font-medium text-slate-800 bg-slate-50 px-4 py-2 rounded-full">
-                🚀 Continuous Learner
-              </div>
+              {about.values.map((value, index) => (
+                <div key={index} className="flex items-center gap-2 text-sm font-medium text-slate-800 bg-slate-50 px-4 py-2 rounded-full">
+                  {value}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -162,15 +70,15 @@ export default function Home() {
             <div className="space-y-4">
               <div>
                 <p className="text-slate-400 text-xs uppercase tracking-widest mb-2">Core Expertise</p>
-                <p className="text-sm font-mono">React, Next.js, Angular (6-14), TypeScript</p>
+                <p className="text-sm font-mono">{about.techStack.core}</p>
               </div>
               <div className="border-t border-slate-800 pt-4">
                 <p className="text-slate-400 text-xs uppercase tracking-widest mb-2">Architectural Patterns</p>
-                <p className="text-sm font-mono">Micro-Frontends, Module Federation, API Integration</p>
+                <p className="text-sm font-mono">{about.techStack.architecture}</p>
               </div>
               <div className="border-t border-slate-800 pt-4">
                 <p className="text-slate-400 text-xs uppercase tracking-widest mb-2">Backend & Tools</p>
-                <p className="text-sm font-mono"> .NET Core, SQL, Oracle, Jest</p>
+                <p className="text-sm font-mono">{about.techStack.backend}</p>
               </div>
             </div>
           </div>
@@ -231,10 +139,9 @@ export default function Home() {
 
       <section id="contact" className="py-20 border-t border-gray-100 text-center">
         <div className="max-w-2xl mx-auto space-y-8">
-          <h2 className="text-3xl font-bold tracking-tight">Let's Connect</h2>
+          <h2 className="text-3xl font-bold tracking-tight">{contact.heading}</h2>
           <p className="text-lg text-slate-600">
-            Currently open to new opportunities in Stockholm.
-            Feel free to reach out via email or connect on LinkedIn.
+            {contact.description}
           </p>
 
           {/* Action Buttons Grid */}
@@ -242,7 +149,7 @@ export default function Home() {
 
             {/* 1. Primary Email Link */}
             <a
-              href={`mailto:${email}`}
+              href={`mailto:${contact.email}`}
               className="w-full md:w-auto bg-black text-white px-8 py-4 rounded-full font-medium hover:bg-slate-800 transition shadow-lg flex items-center justify-center gap-2"
             >
               Send Email
@@ -250,7 +157,7 @@ export default function Home() {
 
             {/* 2. LinkedIn Button */}
             <a
-              href="https://www.linkedin.com/in/akshay-das-a-s-144530143/" // REPLACE WITH YOUR LINK
+              href={contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full md:w-auto border border-blue-600 text-blue-600 px-8 py-4 rounded-full font-medium hover:bg-blue-50 transition flex items-center justify-center gap-2"
@@ -259,15 +166,10 @@ export default function Home() {
             </a>
 
             {/* 3. Copy Email Fallback */}
-            <button
-              onClick={copyToClipboard}
-              className="w-full md:w-auto border border-slate-200 px-8 py-4 rounded-full font-medium hover:bg-slate-50 transition text-slate-600"
-            >
-              {copied ? "Copied! ✅" : "Copy Email"}
-            </button>
+            <CopyEmailButton email={contact.email} />
 
             <a
-              href="/Akshay_Frontend_Developer_CV.pdf"
+              href={contact.resumeUrl}
               download
               className="flex items-center gap-2 border border-slate-200 px-8 py-4 rounded-full font-medium hover:bg-slate-50 transition"
             >
@@ -286,3 +188,5 @@ export default function Home() {
     </div>
   );
 }
+
+
