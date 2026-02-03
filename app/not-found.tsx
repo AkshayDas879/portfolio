@@ -1,6 +1,6 @@
 import Link from "next/link";
-import portfolioData from "./portfolio.json";
-import { PortfolioData } from "./types";
+import portfolioData from "./data/portfolio.json";
+import { PortfolioData } from "./lib/types";
 
 export default function NotFound() {
     const data = portfolioData as PortfolioData;
