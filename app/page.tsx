@@ -17,7 +17,7 @@ export default async function Home() {
         {/* Hero Content */}
         <HeroEntrance>
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 dark:text-slate-50 transition-colors duration-300">
+            <h1 className="font-serif text-5xl md:text-7xl font-bold tracking-tight text-slate-900 dark:text-slate-50 transition-colors duration-300">
               {hero.title} <br />
               <span className="text-slate-400 dark:text-slate-500">{hero.subtitle}</span>
             </h1>
@@ -50,7 +50,7 @@ export default async function Home() {
           {/* Left Side: Professional Summary */}
           <div className="md:col-span-7 space-y-6">
             <FadeIn delay={0.2} direction="right">
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 transition-colors">{about.heading}</h2>
+              <h2 className="font-serif text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 transition-colors">{about.heading}</h2>
               <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed transition-colors">
                 {about.summary}
               </p>
@@ -95,7 +95,7 @@ export default async function Home() {
       </section>
 
       <section id="work" className="py-20 border-t border-gray-100 dark:border-slate-800 transition-colors duration-300">
-        <h2 className="text-3xl font-bold mb-8 text-slate-900 dark:text-slate-50 transition-colors">Featured Work</h2>
+        <h2 className="font-serif text-3xl font-bold mb-8 text-slate-900 dark:text-slate-50 transition-colors">Featured Work</h2>
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <div key={index} className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-transparent hover:border-slate-200 dark:hover:border-slate-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
@@ -115,7 +115,7 @@ export default async function Home() {
       <section id="experience" className="py-20 border-t border-gray-100 dark:border-slate-800 transition-colors duration-300">
         <div className="max-w-3xl">
           <FadeIn>
-            <h2 className="text-3xl font-bold tracking-tight mb-12 text-slate-900 dark:text-slate-50 transition-colors">Experience</h2>
+            <h2 className="font-serif text-3xl font-bold tracking-tight mb-12 text-slate-900 dark:text-slate-50 transition-colors">Experience</h2>
 
             <div className="space-y-12">
               {experience.map((job, index) => (
@@ -151,7 +151,7 @@ export default async function Home() {
       <section id="contact" className="py-20 border-t border-gray-100 dark:border-slate-800 text-center transition-colors duration-300">
         <FadeIn direction="up">
           <div className="max-w-2xl mx-auto space-y-8">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 transition-colors">{contact.heading}</h2>
+            <h2 className="font-serif text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 transition-colors">{contact.heading}</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 transition-colors">
               {contact.description}
             </p>

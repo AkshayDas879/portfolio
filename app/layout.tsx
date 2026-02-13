@@ -1,19 +1,31 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./styles/globals.css";
 import { ThemeProvider } from "./context/theme-context";
 import { ThemeToggle } from "./components/theme-toggle";
 import { GSAPProvider } from "./components/animations";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Modern, clean sans-serif - popular in Scandinavian design
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Professional monospace font for code
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  display: "swap",
+});
+
+// Elegant serif for headings - adds sophistication
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  display: "swap",
 });
 
 import portfolioData from "./data/portfolio.json";
@@ -67,7 +79,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300`}>
+      <body className={`${inter.variable} ${jetbrainsMono.variable} ${playfair.variable} antialiased bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300`}>
         {data.seo.gaId && (
           <>
             <Script
