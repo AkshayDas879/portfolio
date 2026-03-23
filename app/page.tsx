@@ -3,6 +3,7 @@ import portfolioData from "./data/portfolio.json";
 import { PortfolioData } from "./lib/types";
 import CopyEmailButton from "./components/copy-email-button";
 import { HeroEntrance, FadeIn, StaggerContainer } from "./components/animations";
+import ParticleBackground from "./components/particle-background";
 
 async function getPortfolioData() {
   return portfolioData as PortfolioData;
@@ -13,7 +14,8 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col gap-20">
-      <section className="flex flex-col gap-8 py-24">
+      <ParticleBackground />
+      <section className="flex flex-col gap-8 py-24 relative">
         {/* Hero Content */}
         <HeroEntrance>
           <div className="space-y-4">
@@ -129,7 +131,7 @@ export default async function Home() {
                     </span>
                     <h3 className="text-xl font-bold text-slate-900 dark:text-slate-50 transition-colors">{job.company}</h3>
                     <p className="text-md font-medium text-slate-700 dark:text-slate-300 mb-2 transition-colors">{job.role}</p>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl transition-colors">
+                    <p className="whitespace-pre-line text-slate-600 dark:text-slate-400 leading-relaxed transition-colors">
                       {job.description}
                     </p>
 
