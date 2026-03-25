@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import portfolioData from "./data/portfolio.json";
 import { PortfolioData } from "./lib/types";
-import CopyEmailButton from "./components/copy-email-button";
+import ContactModal from "./components/contact-modal";
 import { HeroEntrance, FadeIn, StaggerContainer } from "./components/animations";
 import ParticleBackground from "./components/particle-background";
 
@@ -40,12 +40,14 @@ export default async function Home() {
                 >
                   {hero.ctaPrimary}
                 </a>
-                <a
-                  href="#contact"
+                <ContactModal 
+                  email={contact.email} 
+                  linkedin={contact.linkedin} 
+                  whatsapp={contact.whatsapp}
                   className="border border-slate-200 dark:border-slate-700 px-8 py-3 rounded-full font-medium hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-900 dark:text-slate-50 transition-all duration-200 hover:scale-105 active:scale-95"
                 >
                   {hero.ctaSecondary}
-                </a>
+                </ContactModal>
               </div>
             </div>
 
@@ -170,55 +172,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section id="contact" className="py-20 border-t border-gray-100 dark:border-slate-800 text-center transition-colors duration-300">
-        <FadeIn direction="up">
-          <div className="max-w-2xl mx-auto space-y-8">
-            <h2 className="font-serif text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 transition-colors">{contact.heading}</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 transition-colors">
-              {contact.description}
-            </p>
 
-            {/* Action Buttons Grid */}
-            <div className="flex flex-col md:flex-row justify-center items-center gap-4">
-
-              {/* 1. Primary Email Link */}
-              <a
-                href={`mailto:${contact.email}`}
-                className="w-full md:w-auto min-w-[170px] whitespace-nowrap bg-black text-white px-8 py-4 rounded-full font-medium hover:bg-slate-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition shadow-lg flex items-center justify-center gap-2 hover:scale-105 active:scale-95 duration-200"
-              >
-                Send Email
-              </a>
-
-              {/* 2. LinkedIn Button */}
-              <a
-                href={contact.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full md:w-auto min-w-[170px] whitespace-nowrap border border-blue-600 text-blue-600 px-8 py-4 rounded-full font-medium hover:bg-blue-50 dark:hover:bg-blue-900/20 transition flex items-center justify-center gap-2 hover:scale-105 active:scale-95 duration-200"
-              >
-                LinkedIn
-              </a>
-
-              {/* 3. Copy Email Fallback */}
-              <CopyEmailButton email={contact.email} />
-
-              <a
-                href={contact.resumeUrl}
-                download
-                className="w-full md:w-auto min-w-[170px] whitespace-nowrap flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-slate-50 px-8 py-4 rounded-full font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors hover:scale-105 active:scale-95 duration-200"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                Download CV
-              </a>
-
-            </div>
-          </div>
-        </FadeIn>
-      </section>
 
     </div>
   );

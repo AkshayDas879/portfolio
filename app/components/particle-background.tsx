@@ -74,7 +74,7 @@ export default function ParticleBackground() {
         density: {
           enable: true,
         },
-        value: 100, // Rich but not overwhelming
+        value: 700, // Rich but not overwhelming
       },
       opacity: {
         value: 0.3,

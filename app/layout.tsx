@@ -5,6 +5,7 @@ import "./styles/globals.css";
 import { ThemeProvider } from "./context/theme-context";
 import { ThemeToggle } from "./components/theme-toggle";
 import { GSAPProvider } from "./components/animations";
+import ContactModal from "./components/contact-modal";
 
 // Modern, clean sans-serif - popular in Scandinavian design
 const inter = Inter({
@@ -52,7 +53,7 @@ export async function generateMetadata() {
       siteName: data.seo.title,
       images: [
         {
-          url: data.seo.openGraph.images,
+          url: `${data.seo.url}${data.seo.openGraph.images}`,
           width: 1200,
           height: 630,
           alt: data.personal.name,
@@ -63,7 +64,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title: data.seo.openGraph.title,
       description: data.seo.openGraph.description,
-      images: [data.seo.openGraph.images],
+      images: [`${data.seo.url}${data.seo.openGraph.images}`],
       creator: "@AkshayDas879",
     },
     manifest: "/manifest.webmanifest",
@@ -131,7 +132,16 @@ export default function RootLayout({
                     <ul className="flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
                       <li><a href="#work" className="hover:text-black dark:hover:text-white transition">Work</a></li>
                       <li><a href="#about" className="hover:text-black dark:hover:text-white transition">About</a></li>
-                      <li><a href="#contact" className="hover:text-black dark:hover:text-white transition">Contact</a></li>
+                      <li>
+                        <ContactModal
+                          email={data.contact.email}
+                          linkedin={data.contact.linkedin}
+                          whatsapp={data.contact.whatsapp}
+                          className="hover:text-black dark:hover:text-white transition"
+                        >
+                          Contact
+                        </ContactModal>
+                      </li>
                     </ul>
                     <ThemeToggle />
                   </div>

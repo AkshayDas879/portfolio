@@ -39,6 +39,7 @@ export interface Contact {
     description: string;
     email: string;
     linkedin: string;
+    whatsapp: string;
     resumeUrl: string;
 }
 
