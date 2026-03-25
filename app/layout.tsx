@@ -5,31 +5,29 @@ import "./styles/globals.css";
 import { ThemeProvider } from "./context/theme-context";
 import { ThemeToggle } from "./components/theme-toggle";
 import { GSAPProvider } from "./components/animations";
+import { SmoothScroll } from "./components/smooth-scroll";
+import { CustomCursor } from "./components/custom-cursor";
+import portfolioData from "./data/portfolio.json";
+import { PortfolioData } from "./lib/types";
 
-// Modern, clean sans-serif - popular in Scandinavian design
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
 
-// Professional monospace font for code
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
 });
 
-// Elegant serif for headings - adds sophistication
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   weight: ["400", "700", "900"],
   display: "swap",
 });
-
-import portfolioData from "./data/portfolio.json";
-import { PortfolioData } from "./lib/types";
 
 export async function generateMetadata() {
   const data = portfolioData as PortfolioData;
@@ -78,8 +76,9 @@ export default function RootLayout({
   const data = portfolioData as PortfolioData;
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en">
       <body className={`${inter.variable} ${jetbrainsMono.variable} ${playfair.variable} antialiased bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300`}>
+        <CustomCursor />
         {data.seo.gaId && (
           <>
             <Script
@@ -119,44 +118,42 @@ export default function RootLayout({
             },
           })}
         </Script>
-        <ThemeProvider>
-          <GSAPProvider>
-            <div className="flex flex-col min-h-screen">
-
-              {/* Nav: Full width border, centered content */}
-              <nav className="border-b border-gray-100 dark:border-slate-800 py-6 sticky top-0 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md z-50 w-full transition-colors duration-300">
-                <div className="max-w-5xl mx-auto px-6 flex justify-between items-center">
-                  <div className="font-bold text-xl tracking-tighter uppercase">{data.personal.name}</div>
-                  <div className="flex items-center gap-6">
-                    <ul className="flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
-                      <li><a href="#work" className="hover:text-black dark:hover:text-white transition">Work</a></li>
-                      <li><a href="#about" className="hover:text-black dark:hover:text-white transition">About</a></li>
-                      <li><a href="#contact" className="hover:text-black dark:hover:text-white transition">Contact</a></li>
-                    </ul>
-                    <ThemeToggle />
+        
+        <SmoothScroll>
+          <ThemeProvider>
+            <GSAPProvider>
+              <div className="flex flex-col min-h-screen">
+                <nav className="border-b border-gray-100 dark:border-slate-800 py-6 sticky top-0 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md z-50 w-full transition-colors duration-300">
+                  <div className="max-w-5xl mx-auto px-6 flex justify-between items-center w-full">
+                    <div className="font-bold text-xl tracking-tighter uppercase">{data.personal.name}</div>
+                    <div className="flex items-center gap-6">
+                      <ul className="flex gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+                        <li><a href="#work" className="hover:text-black dark:hover:text-white transition cursor-hover">Work</a></li>
+                        <li><a href="#about" className="hover:text-black dark:hover:text-white transition cursor-hover">About</a></li>
+                        <li><a href="#contact" className="hover:text-black dark:hover:text-white transition cursor-hover">Contact</a></li>
+                      </ul>
+                      <ThemeToggle />
+                    </div>
                   </div>
-                </div>
-              </nav>
+                </nav>
 
-              {/* Main: Removed pt-20 to prevent double-spacing with Hero */}
-              <main className="flex-grow max-w-5xl mx-auto w-full px-6">
-                {children}
-              </main>
+                <main className="flex-grow w-full relative z-10 bg-white dark:bg-slate-950">
+                  {children}
+                </main>
 
-              {/* Footer: Standard layout */}
-              <footer className="border-t border-gray-100 dark:border-slate-800 py-12 transition-colors duration-300">
-                <div className="max-w-5xl mx-auto px-6 flex justify-between items-center text-xs text-slate-400 uppercase tracking-widest">
-                  <p>© {new Date().getFullYear()} — {data.personal.location}</p>
-                  <div className="flex gap-4">
-                    <a href={data.contact.linkedin} className="hover:text-black dark:hover:text-white transition">LinkedIn</a>
-                    <a href={data.personal.github} className="hover:text-black dark:hover:text-white transition">GitHub</a>
+                <footer className="border-t border-gray-100 dark:border-slate-800 py-12 transition-colors duration-300 bg-white dark:bg-slate-950 relative z-0">
+                  <div className="max-w-5xl mx-auto px-6 flex justify-between items-center text-xs text-slate-400 uppercase tracking-widest w-full">
+                    <p>© {new Date().getFullYear()} — {data.personal.location}</p>
+                    <div className="flex gap-4">
+                      <a href={data.contact.linkedin} className="hover:text-black dark:hover:text-white transition cursor-hover">LinkedIn</a>
+                      <a href={data.personal.github} className="hover:text-black dark:hover:text-white transition cursor-hover">GitHub</a>
+                    </div>
                   </div>
-                </div>
-              </footer>
-
-            </div>
-          </GSAPProvider>
-        </ThemeProvider>
+                </footer>
+              </div>
+            </GSAPProvider>
+          </ThemeProvider>
+        </SmoothScroll>
       </body>
     </html>
   );
