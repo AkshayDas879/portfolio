@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import portfolioData from "./data/portfolio.json";
 import { PortfolioData } from "./lib/types";
 import CopyEmailButton from "./components/copy-email-button";
@@ -18,31 +19,50 @@ export default async function Home() {
       <section className="flex flex-col gap-8 py-24 relative">
         {/* Hero Content */}
         <HeroEntrance>
-          <div className="space-y-4">
-            <h1 className="font-serif text-5xl md:text-7xl font-bold tracking-tight text-slate-900 dark:text-slate-50 transition-colors duration-300">
-              {hero.title} <br />
-              <span className="text-slate-400 dark:text-slate-500">{hero.subtitle}</span>
-            </h1>
+          <div className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-20">
+            <div className="flex-1 space-y-8">
+              <div className="space-y-4">
+                <h1 className="font-serif text-5xl md:text-7xl font-bold tracking-tight text-slate-900 dark:text-slate-50 transition-colors duration-300">
+                  {hero.title} <br />
+                  <span className="text-slate-400 dark:text-slate-500">{hero.subtitle}</span>
+                </h1>
 
-            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed transition-colors duration-300">
-              {hero.description}
-            </p>
-          </div>
+                <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed transition-colors duration-300">
+                  {hero.description}
+                </p>
+              </div>
 
-          {/* Primary Actions */}
-          <div className="flex gap-4 pt-4">
-            <a
-              href="#work"
-              className="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all duration-200 hover:scale-105 active:scale-95"
-            >
-              {hero.ctaPrimary}
-            </a>
-            <a
-              href="#contact"
-              className="border border-slate-200 dark:border-slate-700 px-8 py-3 rounded-full font-medium hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-900 dark:text-slate-50 transition-all duration-200 hover:scale-105 active:scale-95"
-            >
-              {hero.ctaSecondary}
-            </a>
+              {/* Primary Actions */}
+              <div className="flex gap-4 pt-4">
+                <a
+                  href="#work"
+                  className="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200 transition-all duration-200 hover:scale-105 active:scale-95"
+                >
+                  {hero.ctaPrimary}
+                </a>
+                <a
+                  href="#contact"
+                  className="border border-slate-200 dark:border-slate-700 px-8 py-3 rounded-full font-medium hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-900 dark:text-slate-50 transition-all duration-200 hover:scale-105 active:scale-95"
+                >
+                  {hero.ctaSecondary}
+                </a>
+              </div>
+            </div>
+
+            {/* Profile Image */}
+            <div className="relative flex-shrink-0 w-64 h-64 md:w-80 md:h-80 mx-auto group">
+              <div className="absolute inset-0 bg-slate-200 dark:bg-slate-800 rounded-[2rem] rotate-3 transition-transform duration-500 group-hover:rotate-6 scale-105"></div>
+              <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl ring-1 ring-slate-900/10 dark:ring-white/10 z-10 transition-transform duration-500 group-hover:-translate-y-2">
+                <Image
+                  src="/assets/profile.jpg"
+                  alt="Profile Picture"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 16rem, 20rem"
+                  priority
+                />
+              </div>
+            </div>
           </div>
         </HeroEntrance>
       </section>
