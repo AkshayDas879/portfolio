@@ -53,7 +53,7 @@ export async function generateMetadata() {
       siteName: data.seo.title,
       images: [
         {
-          url: `${data.seo.url}${data.seo.openGraph.images}`,
+          url: data.seo.openGraph.images as string,
           width: 1200,
           height: 630,
           alt: data.personal.name,
@@ -64,7 +64,7 @@ export async function generateMetadata() {
       card: "summary_large_image",
       title: data.seo.openGraph.title,
       description: data.seo.openGraph.description,
-      images: [`${data.seo.url}${data.seo.openGraph.images}`],
+      images: [data.seo.openGraph.images as string],
       creator: "@AkshayDas879",
     },
     manifest: "/manifest.webmanifest",
