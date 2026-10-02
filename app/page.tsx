@@ -40,9 +40,9 @@ export default async function Home() {
                 >
                   {hero.ctaPrimary}
                 </a>
-                <ContactModal 
-                  email={contact.email} 
-                  linkedin={contact.linkedin} 
+                <ContactModal
+                  email={contact.email}
+                  linkedin={contact.linkedin}
                   whatsapp={contact.whatsapp}
                   className="border border-slate-200 dark:border-slate-700 px-8 py-3 rounded-full font-medium hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-900 dark:text-slate-50 transition-all duration-200 hover:scale-105 active:scale-95"
                 >
@@ -135,45 +135,6 @@ export default async function Home() {
           ))}
         </StaggerContainer>
       </section>
-
-      <section id="experience" className="py-20 border-t border-gray-100 dark:border-slate-800 transition-colors duration-300">
-        <div className="max-w-3xl">
-          <FadeIn>
-            <h2 className="font-serif text-3xl font-bold tracking-tight mb-12 text-slate-900 dark:text-slate-50 transition-colors">Experience</h2>
-
-            <div className="space-y-12">
-              {experience.map((job, index) => (
-                <div key={index} className="relative pl-8 border-l-2 border-slate-100 dark:border-slate-800 last:border-0 pb-2 transition-colors">
-                  {/* The Dot */}
-                  <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-slate-900 dark:border-slate-100 transition-colors" />
-
-                  <div className="flex flex-col gap-1">
-                    <span className="text-sm font-mono text-slate-400 dark:text-slate-500 uppercase tracking-wider transition-colors">
-                      {job.period}
-                    </span>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-slate-50 transition-colors">{job.company}</h3>
-                    <p className="text-md font-medium text-slate-700 dark:text-slate-300 mb-2 transition-colors">{job.role}</p>
-                    <p className="whitespace-pre-line text-slate-600 dark:text-slate-400 leading-relaxed transition-colors">
-                      {job.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {job.skills.map(skill => (
-                        <span key={skill} className="text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500 transition-colors">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-
-
     </div>
   );
 }
